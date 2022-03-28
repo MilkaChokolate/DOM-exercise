@@ -17,6 +17,12 @@
   let table = document.body.firstElementChild;    let table = document.body.firstElementChild;
   for (let i = 0; i < Array.from(document.body.childNodes).length + 1; i++){
       table.rows[i].cells[i].style.backgroundColor = 'red';
-  }//2.покрасить ячейки в красный по диагонали
+  }//2.Покрасить ячейки в красный по диагоналию.
+
+  for (let elem of document.body.children) {
+    if (elem.matches('a[href$="кг"]')) {
+      alert("Ссылка на архив: " + elem.href );
+    }
+  }//Проверить доменное имя ссылки.
 </script>
 </html>
