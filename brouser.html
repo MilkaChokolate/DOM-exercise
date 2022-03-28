@@ -12,6 +12,11 @@
   </ul>
 </body>
 <script>
-  console.log(document.body.firstElementChild, document.body.lastElementChild, document.body.lastElementChild.lastElementChild)
+  console.log(document.body.firstElementChild, document.body.lastElementChild, document.body.lastElementChild.lastElementChild)//1.Получить элементы
+    
+  let table = document.body.firstElementChild;    let table = document.body.firstElementChild;
+  for (let i = 0; i < Array.from(document.body.childNodes).length + 1; i++){
+      table.rows[i].cells[i].style.backgroundColor = 'red';
+  }//2.покрасить ячейки в красный по диагонали
 </script>
 </html>
