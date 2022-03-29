@@ -290,3 +290,61 @@ function addLi(obj){
 }
 addLi(data)
 </script>
+  
+  
+  
+//16.Создать цветные часы с кнопками на js
+<style>
+    div{
+        display: flex;
+    }
+    #hour {
+        color: red;
+    }
+    #minute{
+        color: green;
+    }
+    #second{
+        color: blue;
+    }
+</style>
+<body>
+<div>
+    <p id="hour">hh</p>
+    <p>:</p>
+    <p id="minute">mm</p>
+    <p>:</p>
+    <p id="second">ss</p>
+</div>
+<button onclick="start()">Start</button>
+<button onclick="stop()">Stop</button>
+
+<div id="clock">
+  <span class="hour">hh</span>:<span class="min">mm</span>:<span class="sec">ss</span>
+</div>
+
+<script>
+    let flag = false;
+    let div = document.querySelector('div')
+
+    let time = setInterval(() => {
+        if (flag) {
+            let data = new Date();
+            let hour = document.querySelector('#hour');
+            let minute = document.querySelector('#minute');
+            let second = document.querySelector('#second');
+            hour.innerHTML = data.getHours() > 9 ? data.getHours() : '0'+data.getHours();
+            minute.innerHTML = data.getMinutes() > 9 ? data.getMinutes() : '0'+data.getMinutes();
+            second.innerHTML = data.getSeconds() > 9 ? data.getSeconds() : '0'+data.getSeconds();
+        }
+    }, 1000)
+
+    function start() {
+        flag = true
+
+    }
+
+    function stop() {
+        flag = false;
+    }
+</script>
