@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
   <div>Пользователи:</div>
   <ul>
     <li>Джон</li>
@@ -25,4 +19,122 @@
     }
   }//Проверить доменное имя ссылки.
 </script>
-</html>
+    
+    
+<div id="elem">Мигающий элемент</div>
+<script>
+  setInterval(() => elem.hidden = !elem.hidden, 1000);
+</script>//4.Создать мигающий элемент.
+    
+    
+<style>
+  /* стили зависят от пользовательского атрибута "order-state" */
+  .order[order-state="new"] {
+    color: green;
+  }
+  .order[order-state="pending"] {
+    color: blue;
+  }
+  .order[order-state="canceled"] {
+    color: red;
+  }
+</style>
+
+<div class="order" order-state="new">
+  A new order.
+</div>
+<div class="order" order-state="pending">
+  A pending order.
+</div>
+<div class="order" order-state="canceled">
+  A canceled order.
+</div>
+// немного проще, чем удаление старого/добавление нового класса
+div.setAttribute('order-state', 'canceled');
+//5. Стилизация элемента в зависимости от его нестандартного атрибута и изменение значения этого атрибута.
+
+
+
+<!-- пометить div, чтобы показать здесь поле "name" -->
+<div show-info="name"></div>
+<!-- а здесь возраст "age" -->
+<div show-info="age"></div>
+<script>
+  // код находит элемент с пометкой и показывает запрошенную информацию
+  let user = {
+    name: "Pete",
+    age: 25
+  };
+  for(let div of document.querySelectorAll('[show-info]')) {
+    // вставить соответствующую информацию в поле
+    let field = div.getAttribute('show-info');
+    div.innerHTML = user[field]; // сначала Pete в name, потом 25 в age
+  }
+</script>//6. Запись текста в блок при помощи нестандартного атрибута.
+
+
+
+<style>
+  .order[data-order-state="new"] {
+    color: green;
+  }
+
+  .order[data-order-state="pending"] {
+    color: blue;
+  }
+
+  .order[data-order-state="canceled"] {
+    color: red;
+  }
+</style>
+
+<div id="order" class="order" data-order-state="new">
+  A new order.
+</div>
+
+<script>
+  // чтение
+  alert(order.dataset.orderState); // new
+
+  // изменение
+  order.dataset.orderState = "pending"; // (*)
+</script>//7.Более безопасное решение задачи 5
+
+
+
+  <div data-widget-name="menu">Choose the genre</div>
+  <script>
+    let elem = document.querySelector('[data-widget-name]');
+    alert(elem.dataset.widgetName);
+    //или так
+    alert(elem.getAttribute('data-widget-name'));
+      // или так
+    alert(elem.textContent);
+  </script>//8.Напишите код для выбора элемента с атрибутом data-widget-name из документа и прочитайте его значение.
+
+
+
+let links = document.querySelectorAll('a');
+for (let link of links) {
+  let href = link.getAttribute('href');
+  if (!href) continue; // нет атрибута
+  if (!href.includes('://')) continue; // нет протокола
+  if (href.startsWith('http://internal.com')) continue; // внутренняя
+  link.style.color = 'orange';
+}
+
+//или
+let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+let links = document.querySelectorAll(selector);
+links.forEach(link => link.style.color = 'orange');
+
+//или
+Array.from(document.querySelectorAll("a")).forEach((el) => {
+if (el.href.includes("://") && !el.href.startsWith("http://internal.com"))
+el.style.color = "orange";
+});
+//Сделайте все внешние ссылки оранжевыми, изменяя их свойство style.
+    //Ссылка является внешней, если:
+    //Её href содержит ://
+    //Но не начинается с http://internal.com.
+    
