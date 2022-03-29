@@ -214,3 +214,79 @@ function clear(elem) {
   }
 }
 
+
+/*14.Напишите интерфейс для создания списка.
+Для каждого пункта:
+Запрашивайте содержимое пункта у пользователя с помощью prompt.
+Создавайте элемент <li> и добавляйте его к <ul>.
+Процесс прерывается, когда пользователь нажимает Esc или вводит пустую строку.
+Все элементы должны создаваться динамически.
+Если пользователь вводит HTML-теги -– пусть в списке они показываются как обычный текст.*/
+<ol id="elem">
+
+</ol>
+
+<script>
+    let text = prompt("Введите что-то", "");
+    let elem = document.querySelector("#elem");
+    while ((text !== '') && (text !== null)){
+        let li = document.createElement('li');
+        li.textContent = text;
+        elem.append(li);
+        text = prompt("ВВедите что-то", "")
+    }
+</script>
+  
+  
+//15.Создать html список из вложенного объекта.
+<ul id="elem">
+
+</ul>
+
+<script>
+let data = {
+  "Рыбы": {
+    "форель": {},
+    "лосось": {}
+  },
+
+  "Деревья": {
+    "Огромные": {
+      "секвойя": {},
+      "дуб": {}
+    },
+    "Цветковые": {
+      "яблоня": {},
+      "магнолия": {}
+    }
+  }
+};
+let ul = document.querySelector('#elem');
+function addLi(obj){
+    for (let key of Object.keys(obj)){
+        let li = document.createElement('li');
+        li.innerHTML = key;
+        ul.append(li);
+        if (obj[key] !== {}){
+            for (let key2 of Object.keys(obj[key])){
+                let ul2 = document.createElement('ul');
+                let li = document.createElement('li');
+                li.innerHTML = key2;
+                ul2.append(li);
+                ul.append(ul2)
+                if (obj[key][key2] !== {}){
+                    for (let key3 of Object.keys(obj[key][key2])) {
+                        let ul3 = document.createElement('ul');
+                        let li = document.createElement('li');
+                        li.innerHTML = key3;
+                        ul3.append(li);
+                        ul2.append(ul3);
+                        ul.append(ul2);
+                    }
+                }
+            }
+        }
+    }
+}
+addLi(data)
+</script>
