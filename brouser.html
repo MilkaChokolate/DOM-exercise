@@ -534,3 +534,10 @@ addLi(data)
       });
     }, 2000);
   </script>
+  
+  
+  //22.Напишите код, который возвращает ширину стандартной полосы прокрутки.
+  let scrollWidth = div.offsetWidth - div.clientWidth;
+  
+  //23.Свойство elem.scrollTop содержит размер прокрученной области при отсчёте сверху. А как подсчитать размер прокрутки снизу (назовём его scrollBottom)
+  let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
