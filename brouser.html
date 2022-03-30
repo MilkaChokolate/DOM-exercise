@@ -177,7 +177,7 @@ el.style.color = "orange";
 </script>
 
 
-//11. Перемещение узла с помощбю js
+//12. Перемещение узла с помощбю js
 <div id="first">Первый</div>
 <div id="second">Второй</div>
 <script>
@@ -186,7 +186,7 @@ el.style.color = "orange";
 </script>
 
 
-//12.Кланирование и изменение узла с помощбю js
+//13.Кланирование и изменение узла с помощбю js
 <style>
 .alert {
   padding: 15px;
@@ -207,7 +207,7 @@ el.style.color = "orange";
 
 
 
-//13. Напишите функцию, которая очистит элемент от дочерних элементовю
+//14. Напишите функцию, которая очистит элемент от дочерних элементовю
 function clear(elem) {
   while (elem.firstChild) {
     elem.firstChild.remove();
@@ -215,7 +215,7 @@ function clear(elem) {
 }
 
 
-/*14.Напишите интерфейс для создания списка.
+/*15.Напишите интерфейс для создания списка.
 Для каждого пункта:
 Запрашивайте содержимое пункта у пользователя с помощью prompt.
 Создавайте элемент <li> и добавляйте его к <ul>.
@@ -238,7 +238,7 @@ function clear(elem) {
 </script>
   
   
-//15.Создать html список из вложенного объекта.
+//16.Создать html список из вложенного объекта.
 <ul id="elem">
 
 </ul>
@@ -293,7 +293,7 @@ addLi(data)
   
   
   
-//16.Создать цветные часы с кнопками на js
+//17.Создать цветные часы с кнопками на js
 <style>
     div{
         display: flex;
@@ -348,3 +348,61 @@ addLi(data)
         flag = false;
     }
 </script>
+
+  
+//18.Напишите код для вставки <li>2</li><li>3</li> между этими двумя <li> 
+<body>
+
+<ul id="ul">
+  <li id="one">1</li>
+  <li id="two">4</li>
+</ul>
+
+<script>
+    let one = document.querySelector('#one');
+    let li2 = document.createElement('li');
+    li2.textContent = '2';
+    let li3 = document.createElement('li');
+    li3.textContent = '3';
+    one.after(li3);
+    one.after(li2);
+  
+  //или
+  one.insertAdjacentHTML('afterend', '<li>2</li><li>3</li>');
+</script>
+  
+  
+  
+//19.Отсортировать таблицу по имени (по первому столбцу)
+   <table id="table">
+    <tr>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Возраст</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Smith</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Pete</td>
+      <td>Brown</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Ann</td>
+      <td>Lee</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <script>
+      let table = document.querySelector('#table')
+    let sortedRows = Array.from(table.rows)
+    .slice(1)
+    .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
+
+    table.tBodies[0].append(...sortedRows);
+  </script>
+</body>
