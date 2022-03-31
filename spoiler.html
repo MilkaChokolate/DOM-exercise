@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Первая HTML страница</title>
+</head>
+
+<style>
+  #spoiler{
+    cursor: pointer;
+  }
+  .hide{
+    display: none;
+  }
+  .green{
+    color: green;
+  }
+</style>
+
+<body>
+<div id="spoiler" onclick="hideSpoiler()"><div style="display: flex"><div class="green">▶</div><div> Сладости (нажми меня)!</div></div></div>
+  <ul id="contentSpoiler" class="hide">
+    <li>Пирожное</li>
+    <li>Пончик</li>
+    <li>Мёд</li>
+  </ul>
+
+</body>
+
+<script>
+function hideSpoiler() {
+  let contentSpoiler = document.querySelector('#contentSpoiler');
+  let green = document.querySelector('.green');
+  if (contentSpoiler.classList.contains('hide')){
+    contentSpoiler.classList.remove('hide');
+    green.textContent = "▼";
+  } else {
+    contentSpoiler.classList.add('hide');
+    green.textContent = "▶";
+  }
+}
+</script>
+</html>
