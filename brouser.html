@@ -541,3 +541,38 @@ addLi(data)
   
   //23.Свойство elem.scrollTop содержит размер прокрученной области при отсчёте сверху. А как подсчитать размер прокрутки снизу (назовём его scrollBottom)
   let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+  
+  
+  
+  
+//24.Переместить мяч в центр поля.
+    <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+    #ball {
+      position: absolute;
+        width: 40px;
+        height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+</body>
+<script>
+    let ball = document.querySelector('#ball');
+    let field = document.querySelector('#field')
+    let x = Math.round(field.clientWidth/2 - ball.clientWidth/2) + 'px';
+    let y = Math.round(field.clientHeight/2 - ball.clientWidth/2) + 'px';
+    ball.style.left = x;
+    ball.style.top = y;
+</script>
+  
+  
