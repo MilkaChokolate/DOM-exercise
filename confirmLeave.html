@@ -16,6 +16,14 @@
 
 <script>
   contents = document.querySelector('#contents');
+  
+  contents.addEventListener('click', confirmLeave);
+  function confirmLeave(event) {
+    if(event.target.href || event.target.closest("a").href){
+    confirm("sure?") ? true : event.preventDefault();
+    }
+  }
+  //или
   contents.onclick = function(event) {
 
     function handleLink(href) {
