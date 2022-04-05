@@ -576,3 +576,16 @@ addLi(data)
 </script>
   
   
+  
+//5.Валидация номера телефона при вводе
+ <body>
+   <input onkeydown="return checkPhoneKey(event.key)" placeholder="Введите телефон" type="tel">
+ </body>
+ <script>
+function checkPhoneKey(key) {
+  return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-';
+}
+</script>
+<input onkeydown="return checkPhoneKey(event.key)" placeholder="Введите телефон" type="tel">
+  
+  
