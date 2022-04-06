@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Первая HTML страница</title>
+<meta charset="utf-8">
+
+  <style>
+    td select,
+    td input {
+      width: 150px;
+    }
+
+    #diagram td {
+      vertical-align: bottom;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #diagram div {
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  Депозитный калькулятор.
+
+  <form name="calculator">
+    <table>
+      <tr>
+        <td>Первоначальный депозит</td>
+        <td>
+          <input class="change" name="money" type="number" value="10000" required>
+        </td>
+      </tr>
+      <tr>
+        <td>Срок вклада?</td>
+        <td>
+          <select name="months" class="change">
+            <option value="3">3 (минимум)</option>
+            <option value="6">6 (полгода)</option>
+            <option value="12" selected>12 (год)</option>
+            <option value="18">18 (1.5 года)</option>
+            <option value="24">24 (2 года)</option>
+            <option value="30">30 (2.5 года)</option>
+            <option value="36">36 (3 года)</option>
+            <option value="60">60 (5 лет)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Годовая процентная ставка?</td>
+        <td>
+          <input name="interest" type="number" value="5" required class="change">
+        </td>
+      </tr>
+    </table>
+
+
+  </form>
+
+
+  <table id="diagram">
+    <tr>
+      <th>Было:</th>
+      <th>Станет:</th>
+    </tr>
+    <tr>
+      <th id="money-before">10000</th>
+      <th id="money-after">10500</th>
+    </tr>
+    <td>
+      <div style="background: red;width:40px;height:100px"></div>
+    </td>
+    <td>
+      <div style="background: green;width:40px;height:105px" id="height-after"></div>
+    </td>
+  </table>
+
+  <script>
+
+    let form = document.forms.calculator;
+
+
+    let changes = document.querySelectorAll('.change');
+    for (let change of changes){
+      change.addEventListener('input', function (){
+        let initial = +form.money.value;
+        let months = form.months;
+        let years = +months.options[months.selectedIndex].value/12;
+        let interest = +form.interest.value/100;
+        let result = Math.round(initial * (1 + interest) ** years);
+        console.log(initial, years, interest)
+        document.querySelector('#money-before').innerHTML = initial;
+        document.querySelector('#money-after').innerHTML = result;
+
+        let green = document.querySelector('#height-after');
+        green.style.height = result / initial * 100 + 'px';
+      })
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
