@@ -66,7 +66,7 @@
                                                         '<br>Пожалуйста..</div>\n' +
                                                         '<input name="text" type="text" id="text">\n' +
                                                         '<input type="submit" value="Ok">\n' +
-                                                        '<input type="button" name="cancel" value="Отмена" onclick="document.querySelector(`prompt-form-container`).remove()">\n' +
+                                                        '<input type="button" name="cancel" value="Отмена" onclick="document.querySelector(`prompt-form-container`).remove(); document.body.style.overflowY = document.body.style.overflowX = '">\n' +
                                                       '</form>\n' +
                                                     '</div>')
     document.body.style.overflowY = document.body.style.overflowX = 'hidden';
